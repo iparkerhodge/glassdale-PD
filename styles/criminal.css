@@ -1,0 +1,18 @@
+.criminalsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.criminal {
+    border: 1px solid black;
+    text-align: center;
+    flex-basis: 15%;
+    margin: 15px;
+    padding: 5px;
+}
+
+.criminal__name {
+    font-weight: bold;
+    padding-bottom: 3px;
+}
