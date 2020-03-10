@@ -6,13 +6,20 @@
 
 .criminal {
     border: 1px solid black;
-    text-align: center;
     flex-basis: 15%;
     margin: 15px;
     padding: 5px;
 }
 
-.criminal__name {
+#criminal__name {
     font-weight: bold;
-    padding-bottom: 3px;
+    font-size: 1.1rem;
+    text-decoration: underline;
+    padding-bottom: 6px;
+    text-align: center;
+}
+
+.criminal__detail {
+    padding: 2px;
+    font-size: 1rem;
 }
