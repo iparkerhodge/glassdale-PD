@@ -1,5 +1,13 @@
 @import "criminal.css";
+@import "form.css";
+@import "filters.css";
+@import "notes.css";
 
 *{
     box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
 }
