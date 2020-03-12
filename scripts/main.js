@@ -5,11 +5,14 @@ import { ConvictionSelect } from "./convictions/ConvictionsSelect.js";
 import { getNotes } from "./notes/noteDataProvider.js";
 import NoteForm from "./notes/NoteForm.js";
 import { NoteList } from "./notes/NoteList.js";
+import { initializeDetailButtonEvents } from "./criminals/dialog.js";
 
 NoteForm()
 
-getCriminals().then(CriminalsList)
+getCriminals().then(CriminalsList).then(initializeDetailButtonEvents)
 
 getConvictions().then(ConvictionSelect)
 
 getNotes().then(NoteList)
+
+
