@@ -18,7 +18,7 @@ const render = () => {
                 <textarea name="noteEntry" id="noteEntry" cols="100"></textarea>
             </fieldset>
         </form>
-        <button id="saveNote">Save Note</button>
+        <button id="saveNote" onClick="window.location.reload();">Save Note</button>
     `
 }
 
