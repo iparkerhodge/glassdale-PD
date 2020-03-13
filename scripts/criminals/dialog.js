@@ -1,19 +1,44 @@
 export const initializeDetailButtonEvents = () => {
-    const allCloseButtons = document.querySelectorAll(".button--close")
-    const allAssociateButtons = document.querySelectorAll("button[id^='button--']")
+    const criminalContainer = document.querySelector(".criminalsContainer")
 
-    Array.from(allCloseButtons).map((closeButton) => {
-        closeButton.addEventListener("click", clickEvent => {
-            const dialogElement = clickEvent.target.parentNode
-            dialogElement.close()
-        })
+    criminalContainer.addEventListener("click", clickEventClose => {
+
+        if (clickEventClose.target.className === "button--close") {
+            clickEventClose.target.parentNode.close()
+        } 
     })
 
-    Array.from(allAssociateButtons).map((associateBtn) => {
-        associateBtn.addEventListener("click", clickEvent => {
-            const dialogSiblingSelector = `#${clickEvent.target.id}+dialog`
-            const theDialog = document.querySelector(dialogSiblingSelector)
+    criminalContainer.addEventListener("click", clickEventOpen => {
+        const clickEventID = clickEventOpen.target.id
+        const [prefix, id] = clickEventID.split("--")
+        const dialogID = `#dialog--${id}`
+        const theDialog = document.querySelector(dialogID)
+
+        if (clickEventOpen.target.id.includes("button--")) {
             theDialog.showModal()
-        })
+        }
     })
 }
+
+        // const dialogSiblingSelector = `#${clickEventOpen.target.id}+dialog `
+        // const theDialog = document.querySelector(dialogSiblingSelector) 
+
+
+
+// const allCloseButtons = document.querySelectorAll(".button--close")
+//     const allAssociateButtons = document.querySelectorAll("button[id^='button--']")
+
+//     Array.from(allCloseButtons).map((closeButton) => {
+//         closeButton.addEventListener("click", clickEvent => {
+//             const dialogElement = clickEvent.target.parentNode
+//             dialogElement.close()
+//         })
+//     })
+
+//     Array.from(allAssociateButtons).map((associateBtn) => {
+//         associateBtn.addEventListener("click", clickEvent => {
+            // const dialogSiblingSelector = `#${clickEvent.target.id}+dialog`
+//             const theDialog = document.querySelector(dialogSiblingSelector)
+//             theDialog.showModal()
+//         })
+//     })
