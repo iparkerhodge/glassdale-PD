@@ -1,3 +1,5 @@
+import { NoteList } from "./NoteList.js"
+
 const eventHub = document.querySelector(".container")
 
 const dispatchStateChangeEvent = () => {
@@ -31,4 +33,19 @@ export const saveNote = note => {
     })
     .then(getNotes)
     .then(dispatchStateChangeEvent)
+}
+
+const resetHTML = () => {
+    const contentTarget = document.querySelector(".noteContainer")
+    contentTarget.innerHTML = ""
+}
+
+export const deleteNote = id => {
+    return fetch(`http://localhost:8080/notes/${id}`, {
+        method: "DELETE",
+    })
+    .then(getNotes)
+    .then(dispatchStateChangeEvent)
+    .then(resetHTML)
+    .then(NoteList)
 }

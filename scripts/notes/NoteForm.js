@@ -5,15 +5,15 @@ const contentTarget = document.querySelector(".noteFormContainer")
 const render = () => {
     contentTarget.innerHTML = `
         <form>
-            <fieldset>
+            <fieldset class="form__set">
                 <label for="noteDate">Date</label>
                 <input type="date" name="noteDate" id="noteDate">
             </fieldset>
-            <fieldset>
+            <fieldset class="form__set">
                 <label for="noteSuspect">Suspect</label>
                 <input type="text" name="noteSuspect" id="noteSuspect">
             </fieldset>
-            <fieldset>
+            <fieldset class="form__set">
                 <label for="noteEntry">Case Note Entry</label><br>
                 <textarea name="noteEntry" id="noteEntry" cols="100"></textarea>
             </fieldset>

@@ -1,16 +1,22 @@
 {
   "notes": [
     {
-      "date": "2020-03-11",
-      "suspect": "Madelyn Lebsack",
-      "text": "Test",
+      "date": "",
+      "suspect": "",
+      "text": "",
       "id": 1
     },
     {
-      "date": "2020-03-12",
-      "suspect": "Nathanael Champlin",
-      "text": "Test",
+      "date": "",
+      "suspect": "",
+      "text": "",
       "id": 2
+    },
+    {
+      "date": "",
+      "suspect": "",
+      "text": "",
+      "id": 3
     }
   ]
 }

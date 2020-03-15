@@ -1,4 +1,4 @@
-import { useNotes } from "./noteDataProvider.js"
+import { useNotes, deleteNote } from "./noteDataProvider.js"
 import { Note } from "./Note.js"
 
 const contentTarget = document.querySelector(".noteContainer")
@@ -13,3 +13,11 @@ export const NoteList = () => {
     const allNotes = useNotes()
     render(allNotes)
 }
+
+contentTarget.addEventListener("click", clickEvent => {
+    const noteID = clickEvent.target.id.split("--")[1]
+
+    if (clickEvent.target.id.includes("deleteNote")) {
+        deleteNote(noteID)
+    }
+})
