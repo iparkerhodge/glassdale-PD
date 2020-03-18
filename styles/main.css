@@ -12,3 +12,12 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.header {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.invisible{
+    display: none;
+}

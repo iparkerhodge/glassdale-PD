@@ -1,9 +1,18 @@
-/* .witnessList {
+.witnessContainer {
+    flex-basis: 100%;
+}
+
+.witnessList {
+    display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    border: 2px solid black;
+    margin: 2px;
 }
 
 .witness {
-    flex-basis: 50%;
+    flex-basis: 40%;
     border: 1px solid black;
+    margin: 5px;
     padding: 5px;
-} */
+}
