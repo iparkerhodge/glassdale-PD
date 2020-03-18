@@ -4,6 +4,7 @@ import { Criminal } from "./Criminal.js"
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".criminalsContainer")
 
+
 // Render ALL criminals initally
 export const CriminalsList = () => {
     const appStateCriminals = useCriminals()

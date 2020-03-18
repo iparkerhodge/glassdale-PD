@@ -2,6 +2,7 @@
 @import "form.css";
 @import "filters.css";
 @import "notes.css";
+@import "witness.css";
 
 *{
     box-sizing: border-box;
