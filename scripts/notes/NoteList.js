@@ -1,17 +1,37 @@
-import { useNotes, deleteNote } from "./noteDataProvider.js"
+import { useNotes, deleteNote, getNotes } from "./noteDataProvider.js"
 import { Note } from "./Note.js"
 
+const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".noteContainer")
 
-const render = noteCollection => {
-    for (const noteObject of noteCollection) {
-        contentTarget.innerHTML += Note(noteObject)
+let Visibility = false
+
+eventHub.addEventListener("showAllNotesButtonClicked", e => {
+    Visibility = !Visibility
+
+    if(Visibility) {
+        contentTarget.classList.remove("invisible")
     }
+    else {
+        contentTarget.classList.add("invisible")
+    }
+})
+
+const render = () => {
+
+    getNotes().then(() => {
+        const allTheNotes = useNotes()
+
+        contentTarget.innerHTML = allTheNotes.map(note => {
+            return Note(note)
+        }).join("")
+    })
+
+    contentTarget.classList.add("invisible")
 }
 
 export const NoteList = () => {
-    const allNotes = useNotes()
-    render(allNotes)
+    render()
 }
 
 contentTarget.addEventListener("click", clickEvent => {

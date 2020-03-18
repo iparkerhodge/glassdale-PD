@@ -8,8 +8,10 @@ import { NoteList } from "./notes/NoteList.js";
 import { initializeDetailButtonEvents } from "./criminals/dialog.js";
 import { getWitness } from "./witness/WitnessProvider.js";
 import { WitnessList } from "./witness/WitnessList.js";
+import { makeButtons } from "./notes/buttons.js";
 
 NoteForm()
+makeButtons()
 
 getCriminals().then(CriminalsList).then(initializeDetailButtonEvents)
 

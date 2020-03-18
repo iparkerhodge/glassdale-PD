@@ -1,6 +1,9 @@
 import { useWitness } from "./WitnessProvider.js"
 
+const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".witnessContainer")
+
+let visibility = false
 
 export const WitnessList = () => {
     const witnesses = useWitness()
@@ -9,12 +12,10 @@ export const WitnessList = () => {
 
 
 const render = collection => {
-        contentTarget.innerHTML = `
-            <div class="witnessButton">
-                <button id="witnessStatements">Witness Statements</button>
-            </div>
+        contentTarget.classList.add("invisible")
 
-            <div class="witnessList" style="display:none">
+        contentTarget.innerHTML = `
+            <div class="witnessList">
                 ${collection.map(witness => {return `
                         <div class="witness" id="${witness.id}">
                             <div class="witness__name">Name: ${witness.name}</div>
@@ -26,18 +27,13 @@ const render = collection => {
         `
 }
 
-contentTarget.addEventListener("click", clickEvent => {
-    if (clickEvent.target.id === "witnessStatements") {
-        const witnessContainer = document.querySelector(".witnessList")
-        const criminalContainer = document.querySelector(".criminalsContainer")
+eventHub.addEventListener("showWitnessStatementsClicked", e => {
+    visibility = !visibility
 
-        if (witnessContainer.style.display === "none") {
-            witnessContainer.style.display = "flex"
-            criminalContainer.style.display = "none"
-        }
-        else {
-            witnessContainer.style.display = "none"
-            criminalContainer.style.display = "flex"
-        }
+    if (visibility) {
+        contentTarget.classList.remove("invisible")
+    }
+    else {
+        contentTarget.classList.add("invisible")
     }
 })
