@@ -4,19 +4,29 @@
       "date": "2020-03-13",
       "suspect": "Madelyn Lebsack",
       "text": "Test",
+      "criminalId": 1,
       "id": 1
     },
     {
       "date": "2020-03-13",
       "suspect": "Rogelio Hills",
       "text": "Test",
+      "criminalId": 2,
       "id": 2
     },
     {
       "date": "2020-03-06",
       "suspect": "Nathanael Champlin",
       "text": "",
+      "criminalId": 3,
       "id": 3
+    },
+    {
+      "date": "2020-03-03",
+      "suspect": "Taurean Bins",
+      "text": "test again",
+      "criminalId": 7,
+      "id": 4
     }
   ]
 }

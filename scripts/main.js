@@ -13,12 +13,16 @@ import { makeButtons } from "./notes/buttons.js";
 NoteForm()
 makeButtons()
 
-getCriminals().then(CriminalsList).then(initializeDetailButtonEvents)
+getCriminals()
+.then(getNotes)
+.then(NoteList)
+.then(CriminalsList)
+.then(initializeDetailButtonEvents)
 
 getWitness().then(WitnessList)
 
 getConvictions().then(ConvictionSelect)
 
-getNotes().then(NoteList)
+
 
 
