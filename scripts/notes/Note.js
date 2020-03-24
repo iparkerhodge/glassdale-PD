@@ -1,10 +1,12 @@
-export const Note = (note) => {
+export const Note = (noteObject, criminal) => {
     return `
-    <div class="note">
-        <button id="deleteNote--${note.id}">x</button>
-        <div class="note__date">Date: ${note.date}</div>
-        <div class="note__suspect">Suspect: ${note.suspect}</div>
-        <div class="note__text">Entry: ${note.text}</div>
-    </div>
+        <section class="note">
+            <button id="deleteNote--${noteObject.id}">x</button>
+            <header>
+                <h2>${criminal.name}</h2>
+            </header>
+            <p>${noteObject.text}</p>
+            <p>${new Date(noteObject.date).toLocaleDateString()}</p>
+        </section>
     `
 }

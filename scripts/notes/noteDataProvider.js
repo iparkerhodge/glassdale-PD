@@ -46,6 +46,5 @@ export const deleteNote = id => {
     })
     .then(getNotes)
     .then(dispatchStateChangeEvent)
-    .then(resetHTML)
     .then(NoteList)
 }
