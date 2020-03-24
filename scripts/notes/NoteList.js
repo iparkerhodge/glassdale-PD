@@ -1,6 +1,6 @@
 import { useNotes, deleteNote, getNotes } from "./noteDataProvider.js"
 import { Note } from "./Note.js"
-import { useCriminals, getCriminals } from "../criminals/CriminalProvider.js"
+import { useCriminals } from "../criminals/CriminalProvider.js"
 
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".noteContainer")
@@ -18,35 +18,39 @@ eventHub.addEventListener("showAllNotesButtonClicked", e => {
     }
 })
 
-const render = (noteCollection, criminalCollection) => {
+const render = () => {
         
-    contentTarget.innerHTML = noteCollection.map(note => {
-        // Find the related criminal
-        const relatedCriminal = criminalCollection.find(criminal => criminal.id === note.criminalId)
+    if (Visibility) {
+        contentTarget.classList.remove("invisible")
+    }
+    else {
+        contentTarget.classList.add("invisible")
+    }
 
-        return `
-            <section class="note">
-                <h2>Note about ${relatedCriminal.name}</h2>
-                ${note.text}
-            </section>
-        `
-    }).join("")
-    
-    // const allTheNotes = useNotes()
-       
-        // contentTarget.innerHTML = allTheNotes.map(note => {
-        //     return Note(note)
-        // }).join("")
+    getNotes().then ( () => {
 
-    contentTarget.classList.add("invisible")
+        const allTheNotes = useNotes()
+        const allTheCriminals = useCriminals()
+
+        contentTarget.innerHTML = allTheNotes.map(
+            currentNoteObject => {
+
+                // Find the criminal for the current note
+                const theFoundCriminal = allTheCriminals.find(
+                    (currentCriminalObject) => {
+                        return currentNoteObject.criminalId === currentCriminalObject.id
+                    }
+                )
+
+                return Note(currentNoteObject, theFoundCriminal)
+            }
+        ).join("")
+
+    })
 }
 
 export const NoteList = () => {
-    const notes = useNotes()
-    const criminals = useCriminals()
-
-    render(notes, criminals) 
-    // render()
+    render()
 }
 
 contentTarget.addEventListener("click", clickEvent => {

@@ -1,5 +1,5 @@
 import { saveNote } from "./noteDataProvider.js"
-import { getCriminals, useCriminals } from "../criminals/CriminalProvider.js"
+import { useCriminals } from "../criminals/CriminalProvider.js"
 
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".noteFormContainer")
@@ -18,16 +18,21 @@ eventHub.addEventListener("noteFormButtonClicked", e => {
 })
 
 const render = () => {
+    const allCriminals = useCriminals()
     contentTarget.classList.add("invisible")
     contentTarget.innerHTML = `
         <form>
             <fieldset class="form__set">
-                <label for="noteDate">Date</label>
-                <input type="date" name="noteDate" id="noteDate">
-                <label for="noteSuspect">Suspect</label>
-                <input type="text" name="noteSuspect" id="noteSuspect">
-            </fieldset>
-            <fieldset class="form__set">
+                <select id="criminalDropdown">
+                <option value="0">Please choose a criminal...</option>
+                ${
+                    allCriminals.map(
+                        (currentCriminalObject) => {
+                            return `<option value="${currentCriminalObject.id}">${currentCriminalObject.name}</option>`
+                        }
+                    )
+                }
+            </select><br>
                 <label for="noteEntry">Case Note Entry</label><br>
                 <textarea name="noteEntry" id="noteEntry" cols="100"></textarea>
             </fieldset>
@@ -40,22 +45,15 @@ const render = () => {
 contentTarget.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "saveNote") {
 
-        const noteDate = document.getElementById("noteDate")
-        const noteSuspect = document.getElementById("noteSuspect")
         const noteEntry = document.getElementById("noteEntry")
-
-        const Suspect = noteSuspect.value
-        const allTheCriminals = useCriminals()
-        const foundCriminalObject = allTheCriminals.find(criminal => Suspect === criminal.name)
-        const foundCriminalId = foundCriminalObject.id
+        const criminalId = document.querySelector("#criminalDropdown").value
 
         // Make a new object representation of a note
         const newNote = {
             // Key/value pairs here
-            date: noteDate.value,
-            suspect: noteSuspect.value,
-            text: noteEntry.value,
-            criminalId: foundCriminalId
+            date: Date.now(),
+            criminalId: parseInt(criminalId),
+            text: noteEntry.value
         }
 
         // Change API state and application state

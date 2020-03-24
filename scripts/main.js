@@ -10,14 +10,13 @@ import { getWitness } from "./witness/WitnessProvider.js";
 import { WitnessList } from "./witness/WitnessList.js";
 import { makeButtons } from "./notes/buttons.js";
 
-NoteForm()
 makeButtons()
 
 getCriminals()
-.then(getNotes)
 .then(NoteList)
 .then(CriminalsList)
 .then(initializeDetailButtonEvents)
+.then(NoteForm)
 
 getWitness().then(WitnessList)
 
